@@ -87,7 +87,7 @@ Create an image from text`)
             if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
             if (!text) return reply(`Chat dengan AI.\n\nContoh:\n${prefix}${command} Apa itu resesi`);
             const configuration = new Configuration({
-              apiKey: setting.keyopenai,
+              apiKey: process.env.API,
             });
             const openai = new OpenAIApi(configuration);
 
@@ -112,7 +112,7 @@ Create an image from text`)
             if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return reply("Apikey has not been filled in\n\nPlease fill in the apikey first in the key.json file\n\nThe apikey can be made on the website: https://beta.openai.com/account/api-keys");
             if (!text) return reply(`Create an image from AI.\n\nExample :\n${prefix}${command} Wooden house on snow mountain`);
             const configuration = new Configuration({
-              apiKey: setting.keyopenai,
+              apiKey: process.env.API,
             });
             const openai = new OpenAIApi(configuration);
             const response = await openai.createImage({
